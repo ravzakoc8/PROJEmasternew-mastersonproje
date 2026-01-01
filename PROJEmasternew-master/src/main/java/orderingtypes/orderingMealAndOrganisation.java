@@ -89,10 +89,10 @@ Scanner scanner = new Scanner(System.in);
 
         try {
             FileWriter fw = new FileWriter(
-                    "PROJEmasternew-master/src/main/java/com/ravzakoc/yemekveorg_siparişleri.txt", true);
+                    "PROJEmasternew-master/src/main/java/com/ravzakoc/yemekveorg_siparişleri", true);
 
             fw.write(" Email: " + Session.aktifEmail  +
-                    "KARMA SIPARIS | " +
+                    " KARMA SIPARIS | " +
 
                             // --- ORGANİZASYON ---
                             "Organizasyon: Dogum Gunu" +

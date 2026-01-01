@@ -137,7 +137,7 @@ public class SiparisAlanKayıt implements KayıtEkranı {
         System.out.println("Kayıt başarıyla tamamlandı.");
 
         SiparisAlanMemory.organizasyonlar.add(this);
-        SiparisAlanMemory.dosyayaKaydet(); // 💾 KAYDET
+        OrderProviderFileManager.dosyayaKaydet(); // 💾 KAYDET
         System.out.println("Giriş Ekranına grçiş yapıldı");
         GirisEkrani.girisYap();
 

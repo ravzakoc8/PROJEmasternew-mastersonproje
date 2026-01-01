@@ -132,7 +132,7 @@ public class OrganizasyonSirketiKayıt implements KayıtEkranı {
         OrganizasyonSirketiMemory.sirket.add(this);
 
         OrganizasyonSirketiMemory.sirket.add(this);
-        OrganizasyonSirketiMemory.dosyayaKaydet(); // 💾 KAYDET
+        OrganizationCompanyFileManager.dosyayaKaydet(); // 💾 KAYDET
 
         System.out.println("Şirket kaydınız yapıldı.");
         System.out.println("Giriş Ekranına geçiş yapıldı");

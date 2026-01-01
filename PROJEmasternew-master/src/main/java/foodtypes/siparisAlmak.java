@@ -32,7 +32,7 @@ public class siparisAlmak {
             int ekranseçimi= scanner.nextInt();
             if(ekranseçimi==1){
 
-                    OrganizasyonSirketiMemory.dosyadanYukle(); // ⭐ BUNU EKLE
+                   OrganizationCompanyFileManager.dosyadanYukle(); // ⭐ BUNU EKLE
                     GirisEkrani.girisYap();
 
 
@@ -69,7 +69,7 @@ public class siparisAlmak {
             siparisVerenKayıt.kayitAl();}
 
             else if (ekranseçimi1==2) {
-                SiparisAlanMemory.dosyadanYukle(); // 📥 YÜKLE
+                OrderProviderFileManager.dosyadanYukle(); // 📥 YÜKLE
                 GirisEkrani.girisYap();
 
 

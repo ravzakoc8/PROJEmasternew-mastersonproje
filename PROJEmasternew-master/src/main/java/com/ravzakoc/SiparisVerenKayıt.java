@@ -104,7 +104,7 @@ public class SiparisVerenKayıt implements KayıtEkranı {
         }
 
         SiparisVerenMemory.musteriler.add(this);SiparisVerenMemory.musteriler.add(this);
-        SiparisVerenMemory.dosyayaKaydet(this); // 🔥 EKLENDİ
+        OrderCustomerFileManager.dosyayaKaydet(this); // 🔥 EKLENDİ
         System.out.println("Kayıt başarılı, giriş ekranına yönlendiriliyorsunuz...");
         GirisEkrani.girisYap();
 

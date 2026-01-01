@@ -30,7 +30,7 @@ public class Main {
 
             } else if (kayıt == 2) {
                 GirisEkrani girisEkrani = new GirisEkrani();
-                SiparisVerenMemory.dosyadanYukle(); // 🔥 ESKİ KAYITLAR GELİR
+              OrderCustomerFileManager.dosyadanYukle(); // 🔥 ESKİ KAYITLAR GELİR
                 girisEkrani.girisYap();
 
             } else {

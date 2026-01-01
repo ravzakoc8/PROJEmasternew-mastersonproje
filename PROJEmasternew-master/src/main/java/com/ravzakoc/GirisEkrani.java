@@ -9,6 +9,8 @@ public class GirisEkrani {
 
         while (true) {
 
+            System.out.println("Giriş ekranına giriş yapıldı.");
+
             System.out.print("Email: ");
             String email = sc.nextLine();
 
