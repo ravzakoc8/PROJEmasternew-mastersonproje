@@ -1,5 +1,6 @@
 package orderingtypes;
 
+import com.ravzakoc.Session;
 import foodtypes.Normalyemek;
 import foodtypes.VeganYemek;
 import foodtypes.vejeteryanYemek;
@@ -15,13 +16,13 @@ import java.util.Scanner;
 
 public class orderingMealAndOrganisation {
 Scanner scanner = new Scanner(System.in);
-SiparisDeposu siparisDeposu= new SiparisDeposu();
     private SiparisDeposu depo;
+
     private SadeceOrganizasyonSiparişiVermek secilenOrganizasyon;
     private SadeceYemekSiparişiVermek secilenYemek;
 
     public orderingMealAndOrganisation(){
-
+// empty constructor
     }
     public orderingMealAndOrganisation(SiparisDeposu gelenDepo) {
         this.depo = gelenDepo;
@@ -88,9 +89,9 @@ SiparisDeposu siparisDeposu= new SiparisDeposu();
 
         try {
             FileWriter fw = new FileWriter(
-                    "C:/Users/Public/yemekveorg_siparişleri.txt", true);
+                    "PROJEmasternew-master/src/main/java/com/ravzakoc/yemekveorg_siparişleri.txt", true);
 
-            fw.write(
+            fw.write(" Email: " + Session.aktifEmail  +
                     "KARMA SIPARIS | " +
 
                             // --- ORGANİZASYON ---

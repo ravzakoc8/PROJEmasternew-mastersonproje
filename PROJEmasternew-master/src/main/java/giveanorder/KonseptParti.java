@@ -1,5 +1,6 @@
 package giveanorder;
 
+import com.ravzakoc.Session;
 import orderingtypes.SadeceOrganizasyonSiparişiVermek;
 
 import java.io.FileWriter;
@@ -157,14 +158,14 @@ public class KonseptParti extends SadeceOrganizasyonSiparişiVermek {
         try {
             FileWriter fw = new FileWriter("src/main/java/com/ravzakoc/organizasyon_siparisleri.txt", true);
 
-            fw.write(
+            fw.write(" Email: " + Session.aktifEmail  +
                     "Dogum Gunu | Renk: " + getColour() +
                             " | Kisi Sayisi: " + getNumberOfPeople() +
                             " | Garson: " + (getWaiterPreference()
                             ? "Var (" + getNumberOfWaiters() + ")" : "Yok") +
-                            " | DJ: " + (getdj() ? "Var" : "Yok") +" | " + getName() + "\n"
+                            " | DJ: " + (getdj() ? "Var" : "Yok") +" | " + "\n"
             );
-            setName(getName());
+
             fw.close();
 
 

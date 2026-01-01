@@ -1,6 +1,7 @@
 package foodtypes;
 
 import com.ravzakoc.Session;
+import com.ravzakoc.SiparisVerenKayıt;
 import orderingtypes.SadeceYemekSiparişiVermek;
 
 import java.io.FileWriter;
@@ -150,11 +151,11 @@ public Normalyemek(){
                 FileWriter fw = new FileWriter("C:/Users/Public/yemek_siparisleri.txt", true);
                 fw.write(
                         " Email: " + Session.aktifEmail  +
-                                "Normal Yemek | " +
+                                " Normal Yemek | " +
                                 "Yemek: " + getYemek() +
                                 " | Kisi Sayisi: " + getNumberOfPeople() +
                                 " | Icecek: " + (getBeveragePreference() ? getDrink() : "Yok") +
-                                " | Tatli: " + (getdessertPreference() ? getDessert() : "Yok") + "\n"
+                                " | Tatli: " + (getdessertPreference() ? getDessert() : "Yok") +"\n"
                 );
 
                 fw.close();

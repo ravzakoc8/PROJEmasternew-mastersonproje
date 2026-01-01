@@ -12,6 +12,7 @@ import java.util.Scanner;
         private boolean dj;
         private String name;
 
+
         public String getColour() {
             return colour;
         }

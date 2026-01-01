@@ -8,7 +8,7 @@ public class OrganizasyonSirketiMemory {
 
     public static List<OrganizasyonSirketiKayıt> sirket = new ArrayList<>();
 
-    private static final String DOSYA_YOLU = "organizasyon_sirketleri.txt";
+    private static final String DOSYA_YOLU = "src/main/java/com/ravzakoc/organizasyon_sirketleri.txt";
 
     // 📥 DOSYADAN OKUMA
     public static void dosyadanYukle() {

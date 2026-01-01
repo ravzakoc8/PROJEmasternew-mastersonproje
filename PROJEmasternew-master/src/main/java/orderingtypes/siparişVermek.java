@@ -92,8 +92,13 @@ public class siparişVermek {
             yemek.kayit();
         }
         else if (sipariştürü == 3) {
-            orderingMealAndOrganisation orderingMealAndOrganisation = new orderingMealAndOrganisation();
-            orderingMealAndOrganisation.order();
+            SiparisDeposu depo = new SiparisDeposu();
+            orderingMealAndOrganisation order =
+                    new orderingMealAndOrganisation(depo);
+
+            order.order();
+            order.kayit();
+
         }
 
         else {

@@ -11,6 +11,7 @@ public abstract class SadeceYemekSiparişiVermek {
     private boolean dessertPreference;
     private String dessert;
 
+
     public String getYemek(){
      return yemek;
     }
