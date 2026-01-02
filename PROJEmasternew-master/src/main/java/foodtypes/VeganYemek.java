@@ -20,7 +20,7 @@ public VeganYemek(){
         System.out.println("Lütfen yemek tercihi yapınız ( krep / hamburger  / sarma / makarna salatası / çorba ):");
         String yemek1 = scanner.nextLine().toLowerCase();
         while (true) {
-            if (yemek1.equals("krep") || yemek1.equals(" hamburger ") ||
+            if (yemek1.equals("krep") || yemek1.equals(" hamburger") ||
                     yemek1.equals("sarma") || yemek1.equals("makarna salatası") ||
                     yemek1.equals("çorba")) {
 
@@ -147,7 +147,7 @@ public VeganYemek(){
 
         System.out.println(">>> yemekDosyayaYaz METODUNA GİRİLDİ <<<");
         try {
-            FileWriter fw = new FileWriter("C:/Users/Public/yemek_siparisleri.txt", true);
+            FileWriter fw = new FileWriter("PROJEmasternew-master/src/main/java/com/ravzakoc/yemek_siparisleri.txt", true);
             fw.write(
                     " Email: " + Session.aktifEmail  +
                     " Vegan Yemek | " +

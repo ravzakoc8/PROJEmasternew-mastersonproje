@@ -155,7 +155,7 @@ public class Kına extends SadeceOrganizasyonSiparişiVermek {
 
     public void dosyayaYaz() {
         try {
-            FileWriter fw = new FileWriter("src/main/java/com/ravzakoc/organizasyon_siparisleri.txt", true);
+            FileWriter fw = new FileWriter("PROJEmasternew-master/src/main/java/com/ravzakoc/organizasyon_siparisleri.txt", true);
 
             fw.write(" Email: " + Session.aktifEmail  +
                     "Dogum Gunu | Renk: " + getColour() +

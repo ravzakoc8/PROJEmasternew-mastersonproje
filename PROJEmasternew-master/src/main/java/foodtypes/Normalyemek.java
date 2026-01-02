@@ -148,7 +148,7 @@ public Normalyemek(){
 
         System.out.println(">>> yemekDosyayaYaz METODUNA GİRİLDİ <<<");
             try {
-                FileWriter fw = new FileWriter("C:/Users/Public/yemek_siparisleri.txt", true);
+                FileWriter fw = new FileWriter("PROJEmasternew-master/src/main/java/com/ravzakoc/yemek_siparisleri.txt", true);
                 fw.write(
                         " Email: " + Session.aktifEmail  +
                                 " Normal Yemek | " +

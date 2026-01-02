@@ -34,7 +34,6 @@ public class siparişVermek {
             System.out.println("2- Konsept parti");
             System.out.println("3- Nişan");
             System.out.println("4-Kına");
-            int organizasyontürü= scanner.nextInt();
 
             int orgTuru = scanner.nextInt();
 
