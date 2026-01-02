@@ -10,7 +10,7 @@ public class OrderCustomerFileManager {
 
     // 🔹 PROGRAM AÇILIRKEN ÇAĞRILACAK
     public static void dosyadanYukle() {
-        musteriler.clear();
+         musteriler.clear();
 
 
         try (BufferedReader br = new BufferedReader(new FileReader(DOSYA_ADI))) {
