@@ -1,7 +1,7 @@
 package orderingtypes;
 
 
-public abstract class SadeceYemekSiparişiVermek {
+public abstract class OrderingFood {
     // normal yemek, vejeteryan yemek, vegan yemek
     //methodlar (yemek adı, kişi sayısı,  ister misiniz ve adı , tatlı ister misiniz ve adı)
     private String yemek;
@@ -12,7 +12,7 @@ public abstract class SadeceYemekSiparişiVermek {
     private String dessert;
 
 
-    public String getYemek(){
+    public String getFood(){
      return yemek;
     }
     public void setYemek(String yemek){
@@ -40,7 +40,7 @@ public abstract class SadeceYemekSiparişiVermek {
         this.drink=drink;
     }
 
-    public boolean getdessertPreference(){
+    public boolean getDessertPreference(){
         return dessertPreference;
     }
     public void setDessertPreference(boolean dessertPreference){
@@ -55,11 +55,11 @@ public abstract class SadeceYemekSiparişiVermek {
     }
 
 
- public abstract void yemekadı();
-     public abstract void kişisayisi();
-     public abstract void icecektercihi();
-     public abstract void tatlitercihi();
-     public abstract void yemekDosyayaYaz();
-     public abstract void kayit();
+ public abstract void foodName();
+     public abstract void numberOfPeople();
+     public abstract void beverageChoice();
+     public abstract void dessertChoice();
+     public abstract void writingToFoodFile();
+     public abstract void registration();
 
 }

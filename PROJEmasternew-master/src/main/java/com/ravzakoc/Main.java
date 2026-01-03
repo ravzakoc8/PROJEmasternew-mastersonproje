@@ -1,9 +1,8 @@
 package com.ravzakoc;
 
-import foodtypes.siparisAlmak;
-import orderingtypes.SiparisDeposu;
-import orderingtypes.orderingMealAndOrganisation;
-import orderingtypes.siparişVermek;
+import foodtypes.TakeOrder;
+import orderingtypes.OrderDepot;
+import orderingtypes.Order;
 
 import java.util.Scanner;
 
@@ -11,27 +10,27 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        SiparisDeposu ortakDepo = new SiparisDeposu();
+        OrderDepot sharedStorage = new OrderDepot();
 
-        System.out.println("Hoş geldiniz yapmak istediğiniz işlemin numarasını seçiniz.");
-        System.out.println("1- sipariş vermek istiyorum");
-        System.out.println("2- sipariş almak istiyorum.");
+        System.out.println("Welcome! Please choose an option by entering its number.");
+        System.out.println("1-I want to place an order.");
+        System.out.println("2-I want to take orders.");
 
-        int numara = scanner.nextInt();
-        if (numara == 1) {
-            System.out.println("Seçiminiz sipariş vermek olarak alındı");
-            System.out.println("Lütfen kaydınız yoksa kayıt ekranından kayıt olun eğer kaydınız varsa giriş ekranına gidiniz.");
-            System.out.println("1-Kayıt ekranı");
-            System.out.println("2-giriş ekranı");
-            int kayıt = scanner.nextInt();
-            if (kayıt == 1) {
-                SiparisVerenKayıt kayıt1 = new SiparisVerenKayıt();
-                kayıt1.kayitAl();
+        int number = scanner.nextInt();
+        if (number == 1) {
+            System.out.println("Your selection has been received as placing an order.");
+            System.out.println("If you are not registered, please sign up on the registration screen. If you already have an account, please go to the login screen.");
+            System.out.println("1-Register Screen");
+            System.out.println("2-Login Screen");
+            int register = scanner.nextInt();
+            if (register == 1) {
+                OrderRegistration register1 = new OrderRegistration();
+                register1.register();
 
-            } else if (kayıt == 2) {
-                GirisEkrani girisEkrani = new GirisEkrani();
-              OrderCustomerFileManager.dosyadanYukle(); // 🔥 ESKİ KAYITLAR GELİR
-                girisEkrani.girisYap();
+            } else if (register == 2) {
+                LoginScreen loginScreen = new LoginScreen();
+               OrderCustomerFileManager.dowloadFromFile(); // 🔥 ESKİ KAYITLAR GELİR
+                loginScreen.login();
 
             } else {
                 System.out.println("invalid login");
@@ -39,22 +38,22 @@ public class Main {
             }
 
 
-            siparişVermek sv = new siparişVermek();
-            int sipariştürü = scanner.nextInt();
-            sv.siparişVermek(sipariştürü);
+            Order sv = new Order();
+            int orderType = scanner.nextInt();
+            sv.order(orderType);
 
-        } else if (numara == 2) {
-            System.out.println("Seçiminiz sipariş almak olarak alındı");
-            SiparisDeposu depo = new SiparisDeposu();
+        } else if (number == 2) {
+            System.out.println("You selected: Take orders.");
+            OrderDepot depot = new OrderDepot();
 
-            siparisAlmak siparis = new siparisAlmak(depo);
+            TakeOrder isTakingOrders = new TakeOrder(depot);
 
-            siparis.menuGoster();           // 👈 MENÜ BURADA
-            int secim = scanner.nextInt();
-            siparis.siparisAlmak1(secim);
+            isTakingOrders.ShowMenu();          // 👈 MENÜ BURADA
+            int select = scanner.nextInt();
+            isTakingOrders.takeOrder1(select);
 
         } else {
-            System.out.println("Geçersiz giriş");
+            System.out.println("Invalid login");
             return;
         }
 

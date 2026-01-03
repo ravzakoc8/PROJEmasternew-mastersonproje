@@ -1,127 +1,123 @@
 package orderingtypes;
 
 import com.ravzakoc.Session;
-import foodtypes.Normalyemek;
-import foodtypes.VeganYemek;
-import foodtypes.vejeteryanYemek;
-import giveanorder.Bithday;
-import giveanorder.KonseptParti;
-import giveanorder.Kına;
-import giveanorder.Nikah;
+import foodtypes.NormalFood;
+import foodtypes.VeganFood;
+import foodtypes.VegetarianFood;
+import giveanorder.Birthday;
+import giveanorder.ConceptParty;
+import giveanorder.Kina;
+import giveanorder.Wedding;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class orderingMealAndOrganisation {
 Scanner scanner = new Scanner(System.in);
-    private SiparisDeposu depo;
+    private OrderDepot depot;
 
-    private SadeceOrganizasyonSiparişiVermek secilenOrganizasyon;
-    private SadeceYemekSiparişiVermek secilenYemek;
+    private OrderOrganisation selectedOrganization;
+    private OrderingFood selectedFood;
 
     public orderingMealAndOrganisation(){
 // empty constructor
     }
-    public orderingMealAndOrganisation(SiparisDeposu gelenDepo) {
-        this.depo = gelenDepo;
+    public orderingMealAndOrganisation(OrderDepot orderDepot) {
+        this.depot = orderDepot;
         this.scanner = new Scanner(System.in);
     }
 
 
    public void order() {
-       System.out.println("\n--- BÖLÜM 1: ORGANİZASYON SEÇİMİ ---");
-       // Organizasyon Kodlarını Kopyaladık
-       System.out.println("Vermek istediğiniz organizasyon türünü seçiniz.");
-       System.out.println("1- Doğum günü\n 2- Konsept parti\n 3- Nişan\n 4- Kına");
-       int organizasyontürü = scanner.nextInt();
+       System.out.println("\n--- SECTION 1: ORGANIZATION SELECTION ---");
+// Organizasyon Kodlarını Kopyaladık
+       System.out.println("Please select the type of organization you want.");
+       System.out.println("1- Birthday\n 2- Consept Party\n 3- Wedding \n 4- Kina ");
+       System.out.println("Please enter the number of your choice:");
+       int organisationtype = scanner.nextInt();
 
-       SadeceOrganizasyonSiparişiVermek orgSiparis = null;
+       OrderOrganisation orderOrganisation = null;
 
-       if (organizasyontürü == 1) orgSiparis = new Bithday();
-       if (organizasyontürü == 2) orgSiparis = new KonseptParti();
-       if (organizasyontürü == 3) orgSiparis = new Nikah();
-       if (organizasyontürü == 4) orgSiparis = new Kına();
+       if (organisationtype == 1) orderOrganisation = new Birthday();
+       if (organisationtype == 2) orderOrganisation = new ConceptParty();
+       if (organisationtype == 3) orderOrganisation = new Wedding();
+       if (organisationtype == 4) orderOrganisation = new Kina();
 
-       if (orgSiparis != null) {
-           orgSiparis.aksesuarlar();
-           orgSiparis.numberOfPeople();
-           orgSiparis.waiterPreference();
-           orgSiparis.dj();
-           orgSiparis.tercihler();
-           this.secilenOrganizasyon = orgSiparis;
-           depo.organizasyonEkle(orgSiparis); // Depoya kaydet
-           System.out.println(">> Organizasyon sepete eklendi.");
+       if (orderOrganisation != null) {
+           orderOrganisation.accessories();
+           orderOrganisation.numberOfPeople();
+           orderOrganisation.waiterPreference();
+           orderOrganisation.dj();
+           orderOrganisation.choices();
+           this.selectedOrganization = orderOrganisation;
+           depot.addOrganisation(orderOrganisation); // Depoya kaydet
+           System.out.println(">> Organization added to the cart.");
        }
 
-       System.out.println("\n--- BÖLÜM 2: YEMEK SEÇİMİ ---");
+       System.out.println("\n--- SECTION 2: MEAL SELECTION ---");
        // Yemek Kodlarını Kopyaladık
-       System.out.println("Vermek istediğiniz yemek türünü seçiniz.");
-       System.out.println("1-Normal yemek\n2-Vejeteryan yemek\n3-Vegan yemek");
-       int yemektürü = scanner.nextInt();
+       System.out.println("Please select the type of meal you want to order.");
+       System.out.println("1- Normal meal\n2- Vegetarian meal\n3- Vegan meal");
 
-       SadeceYemekSiparişiVermek yemekSiparis = null;
+       int foodType = scanner.nextInt();
 
-       if (yemektürü == 1) yemekSiparis = new Normalyemek();
-       else if (yemektürü == 2) yemekSiparis = new vejeteryanYemek();
-       else if (yemektürü == 3) yemekSiparis = new VeganYemek();
-       else System.out.println("yanlış tercih yaptınız.");
+       OrderingFood orderFood = null;
 
-       if (yemekSiparis != null) {
-           yemekSiparis.yemekadı();
-           yemekSiparis.kişisayisi();
-           yemekSiparis.icecektercihi();
-           yemekSiparis.tatlitercihi();
-           this.secilenYemek = yemekSiparis;
-           depo.yemekEkle("Yemek Siparişi (Karma Menü)"); // Depoya kaydet
-           System.out.println(">> Yemek sepete eklendi.");
+       if (foodType == 1) orderFood = new NormalFood();
+       else if (foodType == 2) orderFood = new VegetarianFood();
+       else if (foodType == 3) orderFood = new VeganFood();
+       else System.out.println("Invalid choice.");
+
+       if (orderFood != null) {
+           orderFood.foodName();
+           orderFood.numberOfPeople();
+           orderFood.beverageChoice();
+           orderFood.dessertChoice();
+           this.selectedFood = orderFood;
+           depot.addFood("Meal Order (Mixed Menu)"); // Depoya kaydet
+           System.out.println(">> Meal added to the cart.");
        }
 
-       System.out.println("\nHer iki siparişiniz de başarıyla alındı.");
+       System.out.println("\nBoth orders were successfully placed");
    }
-   public void kayit(){
-        dosyayaYaz(secilenOrganizasyon, secilenYemek);
-       System.out.println("tercihleriniz dosyaya kayıt edildi.");
+   public void register(){
+        writeToFile(selectedOrganization, selectedFood);
+       System.out.println("Your selections have been saved to the file.");
    }
-    public void dosyayaYaz(SadeceOrganizasyonSiparişiVermek org,
-                           SadeceYemekSiparişiVermek yemek) {
+    public void writeToFile(OrderOrganisation org,
+                            OrderingFood food) {
 
         try {
             FileWriter fw = new FileWriter(
-                    "PROJEmasternew-master/src/main/java/com/ravzakoc/yemekveorg_siparişleri", true);
+                    "PROJEmasternew-master/src/main/java/com/ravzakoc/order_foodAndOrganisation", true);
 
-            fw.write(" Email: " + Session.aktifEmail  +
-                    " KARMA SIPARIS | " +
-
-                            // --- ORGANİZASYON ---
-                            "Organizasyon: Dogum Gunu" +
-                            " | Isim: " + org.getName() +
-                            " | Renk: " + org.getColour() +
-                            " | Org Kisi Sayisi: " + org.getNumberOfPeople() +
-                            " | Garson: " + (org.getWaiterPreference()
-                            ? "Var (" + org.getNumberOfWaiters() + ")" : "Yok") +
-                            " | DJ: " + (org.getdj() ? "Var" : "Yok") +
+            fw.write(" Email: " + Session.activeEmail +
+                    " MİXED MENU | "+
+                               // --- ORGANİZASYON ---
+                            "Organisation: BİRTHDAY" +
+                            " | Name: " + org.getName() +
+                            "  Colour: " + org.getColour() +
+                            " | The Number Of People Coming: " + org.getNumberOfPeople() +
+                            " | Waitress: " + (org.getWaiterPreference()
+                            ? "Wanted (" + org.getNumberOfWaiters() + ")" : "Not Wanted") +
+                            " | DJ: " + (org.getdj() ? "Wanted" : "Not Wanted") +" | "+
 
                             " || " +
 
                             // --- YEMEK ---
-                            "Yemek: Normal Yemek" +
-                            " | Yemek Turu: " + yemek.getYemek() +
-                            " | Yemek Kisi Sayisi: " + yemek.getNumberOfPeople() +
-                            " | Icecek: " + (yemek.getBeveragePreference()
-                            ? yemek.getDrink() : "Yok") +
-                            " | Tatli: " + (yemek.getdessertPreference()
-                            ? yemek.getDessert() : "Yok") +
-
-                            "\n"
+                            "Food: NORMAL FOOD" +
+                                    "Food: " + food.getFood() +
+                                    " | Number of people: " + food.getNumberOfPeople() +
+                                    " | Beverage: " + (food.getBeveragePreference() ? food.getDrink() : "Not choosen") +
+                                    " | Dessert: " + (food.getDessertPreference() ? food.getDessert() : "Not choosen") +"\n"
             );
 
             fw.close();
-            System.out.println("Karma siparis dosyaya kaydedildi.");
+            System.out.println("Mixed order has been saved to the file.");
 
         } catch (IOException e) {
-            System.out.println("Karma siparis dosyaya yazma hatasi: " + e.getMessage());
+            System.out.println("Error writing mixed order to the file: " + e.getMessage());
         }
     }
 

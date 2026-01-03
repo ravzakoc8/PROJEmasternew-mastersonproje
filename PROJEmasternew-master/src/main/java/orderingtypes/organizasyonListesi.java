@@ -1,38 +1,37 @@
 package orderingtypes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class organizasyonListesi {
-    protected List<SadeceOrganizasyonSiparişiVermek> organizasyonListesi;
-    protected List<String> yemekListesi;
-    protected List<orderingMealAndOrganisation> yemekveorgSiparisi;
+    protected List<OrderOrganisation> organisationList;
+    protected List<String> foodList;
+    protected List<orderingMealAndOrganisation> foodandorgList;
 
 
-    public void organizasyonEkle(SadeceOrganizasyonSiparişiVermek siparis) {
-        organizasyonListesi.add(siparis);
+    public void addOrganisation(OrderOrganisation org) {
+        organisationList.add(org);
     }
 
-    public List<SadeceOrganizasyonSiparişiVermek> getOrganizasyonListesi() {
-        return organizasyonListesi;
+    public List<OrderOrganisation> getOrganisationList() {
+        return organisationList;
     }
 
 
-    public void yemekEkle(String yemekSiparisi) {
-        yemekListesi.add(yemekSiparisi);
+    public void addFood(String food) {
+        foodList.add(food);
     }
 
-    public List<String> getYemekListesi() {
-        return yemekListesi;
+    public List<String> getFoodList() {
+        return foodList;
     }
 
-    public void yemekveorg(orderingMealAndOrganisation sipariş){
-        yemekveorgSiparisi.add(sipariş);
+    public void foodAndOrg(orderingMealAndOrganisation mealAndOrganisation){
+        foodandorgList.add(mealAndOrganisation);
 
     }
 
-    public List< orderingMealAndOrganisation> getYemekveorgSiparisi(){
-        return  yemekveorgSiparisi;
+    public List< orderingMealAndOrganisation> getFoodandorgList(){
+        return foodandorgList;
     }
 
 }

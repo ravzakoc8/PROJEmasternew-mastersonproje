@@ -2,31 +2,31 @@ package com.ravzakoc;
 
 import java.io.*;
 
-import static com.ravzakoc.SiparisAlanMemory.organizasyonlar;
+import static com.ravzakoc.TakeOrderMemory.organisations;
 
 public class OrderProviderFileManager {
-    private static final String DOSYA_YOLU = "PROJEmasternew-master/src/main/java/com/ravzakoc/siparis_alanlar.txt";
+    private static final String FİLE_PATH = "PROJEmasternew-master/src/main/java/com/ravzakoc/take_order.txt";
 
     // 📥 DOSYADAN OKUMA
-    public static void dosyadanYukle() {
-        organizasyonlar.clear();
+    public static void dowloadFromFile() {
+        organisations.clear();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(DOSYA_YOLU))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FİLE_PATH))) {
 
-            String satir;
-            while ((satir = br.readLine()) != null) {
+            String row;
+            while ((row = br.readLine()) != null) {
 
-                String[] parcalar = satir.split(";");
+                String[] part = row.split(";");
 
-                if (parcalar.length == 4) {
-                    SiparisAlanKayıt sa = new SiparisAlanKayıt();
+                if (part.length == 4) {
+                    TakeOrderRegister sa = new TakeOrderRegister();
 
-                    sa.setEmail(parcalar[0]);
-                    sa.setPassword(parcalar[1]);
-                    sa.setTc(parcalar[2]);
-                    sa.setaddress(parcalar[3]);
+                    sa.setEmail(part[0]);
+                    sa.setPassword(part[1]);
+                    sa.setTc(part[2]);
+                    sa.setaddress(part[3]);
 
-                    organizasyonlar.add(sa);
+                    organisations.add(sa);
 
                 }
             }
@@ -34,15 +34,15 @@ public class OrderProviderFileManager {
         } catch (FileNotFoundException e) {
             // İlk çalıştırmada dosya yoksa sorun değil
         } catch (IOException e) {
-            System.out.println("Dosya okuma hatası!");
+            System.out.println("Failed to read from the file.");
         }
     }
 
     // 💾 DOSYAYA YAZMA
-    public static void dosyayaKaydet() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(DOSYA_YOLU))) {
+    public static void saveToFile() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FİLE_PATH))) {
 
-            for (SiparisAlanKayıt sa : organizasyonlar ) {
+            for (TakeOrderRegister sa : organisations) {
                 bw.write(
                         sa.getEmail() + ";" +
                                 sa.getPassword() + ";" +
@@ -53,7 +53,7 @@ public class OrderProviderFileManager {
             }
 
         } catch (IOException e) {
-            System.out.println("Dosya yazma hatası!");
+            System.out.println("Failed to write to the file!");
         }
     }
 }

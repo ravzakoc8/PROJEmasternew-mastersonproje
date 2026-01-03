@@ -2,7 +2,7 @@ package com.ravzakoc;
 
 import java.util.Scanner;
 
-public class SiparisAlanKayıt implements KayıtEkranı {
+public class TakeOrderRegister implements RegisterScreen {
 
     private String email;
     private String password;
@@ -22,7 +22,7 @@ public class SiparisAlanKayıt implements KayıtEkranı {
         if (email.length() >= 3 && email.contains("@") && email.contains(".") && !email.matches("\\d+")) {
             this.email = email;
         } else {
-            System.out.println("Geçersiz email! (en az 3 karakter, @ ve . içermeli)");
+            System.out.println("Invalid email! (Write with at least 3 characters, use @ and . )");
             this.email = null;
         }
     }
@@ -35,7 +35,7 @@ public class SiparisAlanKayıt implements KayıtEkranı {
         if (password.length() >= 3 && !password.matches("\\d+")) {
             this.password = password;
         } else {
-            System.out.println("Geçersiz şifre! (En az 3 karakter)");
+            System.out.println("Invalid password! (Write with at least 3 characters)");
             this.password = null;
         }
     }
@@ -52,14 +52,14 @@ public class SiparisAlanKayıt implements KayıtEkranı {
 
         // 1. Uzunluk Kontrolü
         if (tc.length() != 11) {
-            System.out.println("Geçersiz TC! Tam 11 haneli olmalıdır. (Girilen: " + tc.length() + " hane)");
+            System.out.println("Invalid Turkish ID number! It must be exactly 11 digits long. (Entered: " + tc.length() +" digits");
             return false; // Hata var, false dön
         }
 
         // 2. Rakam Kontrolü
         for (int i = 0; i < tc.length(); i++) {
             if (!Character.isDigit(tc.charAt(i))) {
-                System.out.println("Geçersiz TC! Sadece rakam girilmelidir.");
+                System.out.println("Invalid Turkish ID number! Only digits are allowed.");
                 return false; // Hata var, false dön
             }
         }
@@ -86,13 +86,13 @@ public class SiparisAlanKayıt implements KayıtEkranı {
 
 
     @Override
-    public void kayitAl() {
+    public void register() {
         // Scanner buffer temizliği (Eğer önceki menüden kalıntı varsa temizler)
         // scanner.nextLine(); // Gerekirse bu satırı yorumdan çıkarın
 
         // 1. EMAIL DÖNGÜSÜ
         while (true) {
-            System.out.print("Email giriniz: ");
+            System.out.print("Enter email: ");
             String inputEmail = scanner.nextLine().trim(); // Boşlukları temizle
             setEmail(inputEmail);
 
@@ -103,7 +103,7 @@ public class SiparisAlanKayıt implements KayıtEkranı {
 
         // 2. ŞİFRE DÖNGÜSÜ
         while (true) {
-            System.out.print("Şifre giriniz (En az 3 karakter): ");
+            System.out.print("Enter password (with atleast 3 characters): ");
             String password = scanner.nextLine().trim();
             setPassword(password);
 
@@ -114,12 +114,12 @@ public class SiparisAlanKayıt implements KayıtEkranı {
 
         // 3. TC DÖNGÜSÜ (Burada hata olması imkansız hale getirildi)
         while (true) {
-            System.out.print("TC Kimlik No giriniz: ");
+            System.out.print("Enter Turkish ID number: ");
             String input = scanner.nextLine().trim();
 
-            boolean sonuc = setTc(input);
+            boolean result = setTc(input);
 
-            if (sonuc == true) {
+            if (result == true) {
                 break;
             }
 
@@ -128,18 +128,18 @@ public class SiparisAlanKayıt implements KayıtEkranı {
 
         while (true) {
             System.out.print("Write adress with atleast 3 characters: ");
-            String adress = scanner.nextLine();
-            setaddress(adress);
+            String address = scanner.nextLine();
+            setaddress(address);
             if (this.address!=null){
                 break;
             }}
 
-        System.out.println("Kayıt başarıyla tamamlandı.");
+        System.out.println("Registration completed successfully.");
 
-        SiparisAlanMemory.organizasyonlar.add(this);
-        OrderProviderFileManager.dosyayaKaydet(); // 💾 KAYDET
-        System.out.println("Giriş Ekranına grçiş yapıldı");
-        GirisEkrani.girisYap();
+        TakeOrderMemory.organisations.add(this);
+        OrderProviderFileManager.saveToFile(); // 💾 KAYDET
+        System.out.println("Redirected to the login screen.");
+        LoginScreen.login();
 
     }
 }

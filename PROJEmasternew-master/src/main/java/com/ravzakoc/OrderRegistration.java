@@ -2,7 +2,7 @@ package com.ravzakoc;
 
 import java.util.Scanner;
 
-public class SiparisVerenKayıt implements KayıtEkranı {
+public class OrderRegistration implements RegisterScreen {
 
     private String email;
     private String password;
@@ -20,7 +20,7 @@ public class SiparisVerenKayıt implements KayıtEkranı {
                 && !email.matches("\\d+")){
             this.email = email; // ✅ SADECE GEÇERLİYSE SET
         } else {
-            System.out.println("Geçersiz email! (en az 3 karakter, @ ve . içermeli)");
+            System.out.println("Invalid email! (Must be at least 3 characters long and contain ‘@’ and ‘.’)");
             this.email = null;
         }
     }
@@ -33,7 +33,7 @@ public class SiparisVerenKayıt implements KayıtEkranı {
         if (password.length() >= 3 && !password.matches("\\d+")) {
             this.password = password; // ✅
         } else {
-            System.out.println("Geçersiz şifre! (En az 3 karakter)");
+            System.out.println("Invalid password! (Must be at least 3 characters long)");
             this.password = null;
         }
     }
@@ -43,11 +43,11 @@ public class SiparisVerenKayıt implements KayıtEkranı {
     }
 
     public void setTc(long tc) {
-        int basamakSayisi = String.valueOf(tc).length();
-        if (basamakSayisi == 11 ) {
+        int tcDigitCount = String.valueOf(tc).length();
+        if (tcDigitCount == 11 ) {
             this.tc = tc; // ✅
         } else {
-            System.out.println("Geçersiz TC! (11 haneli olmalı)");
+            System.out.println("Invalid Turkish ID number! (Must be 11 digits long)");
             this.tc = null;
         }
     }
@@ -60,53 +60,54 @@ public class SiparisVerenKayıt implements KayıtEkranı {
         if (address.length() >= 3 && !address.matches("\\d+")) {
             this.address = address; // ✅
         } else {
-            System.out.println("Geçersiz adres!");
+            System.out.println("Invalid address!");
             this.address = null;
         }
     }
 
     @Override
-    public void kayitAl() {
+    public void register() {
         Scanner scanner = new Scanner(System.in);
 
         // EMAIL
         while (true) {
-            System.out.print("Email giriniz: ");
+            System.out.print("Enter email: ");
             setEmail(scanner.nextLine());
             if (email != null) break;
         }
 
         // PASSWORD
         while (true) {
-            System.out.print("Şifre giriniz: ");
+            System.out.print("Enter password: ");
             setPassword(scanner.nextLine());
             if (password != null) break;
         }
 
         // TC
         while (true) {
-            System.out.print("TC Kimlik No giriniz: ");
+            System.out.print("Enter Turkish ID number: ");
             if (scanner.hasNextLong()) {
                 setTc(scanner.nextLong());
                 scanner.nextLine(); // 🔥 BUFFER TEMİZLEME
                 if (tc != null) break;
             } else {
-                System.out.println("Lütfen sadece sayı giriniz.");
+                System.out.println("Please enter numbers only");
                 scanner.nextLine();
             }
         }
 
         // ADDRESS
         while (true) {
-            System.out.print("Adres giriniz: ");
+            System.out.print("Enter address: ");
             setaddress(scanner.nextLine());
             if (address != null) break;
         }
 
-        SiparisVerenMemory.musteriler.add(this);SiparisVerenMemory.musteriler.add(this);
-        OrderCustomerFileManager.dosyayaKaydet(this); // 🔥 EKLENDİ
-        System.out.println("Kayıt başarılı, giriş ekranına yönlendiriliyorsunuz...");
-        GirisEkrani.girisYap();
+        OrderMemory.customer.add(this);
+        OrderMemory.customer.add(this);
+        OrderCustomerFileManager.saveToFile(this); // 🔥 EKLENDİ
+        System.out.println("Registration successful. Redirecting to the login screen...");
+        LoginScreen.login();
 
     }
 }
