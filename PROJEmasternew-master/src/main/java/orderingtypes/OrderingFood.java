@@ -4,7 +4,7 @@ package orderingtypes;
 public abstract class OrderingFood {
     // normal yemek, vejeteryan yemek, vegan yemek
     //methodlar (yemek adı, kişi sayısı,  ister misiniz ve adı , tatlı ister misiniz ve adı)
-    private String yemek;
+    private String food;
     private int numberOfPeople;
     private boolean beveragePreference;
     private String drink;
@@ -13,10 +13,10 @@ public abstract class OrderingFood {
 
 
     public String getFood(){
-     return yemek;
+     return food;
     }
-    public void setYemek(String yemek){
-     this.yemek=yemek;
+    public void setFood(String food){
+     this.food = food;
     }
     
     public int getNumberOfPeople(){
@@ -55,7 +55,7 @@ public abstract class OrderingFood {
     }
 
 
- public abstract void foodName();
+     public abstract void foodName();
      public abstract void numberOfPeople();
      public abstract void beverageChoice();
      public abstract void dessertChoice();

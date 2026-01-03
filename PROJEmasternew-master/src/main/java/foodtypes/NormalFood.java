@@ -24,7 +24,7 @@ public NormalFood(){
                     food1.equals("sarma") || food1.equals("kebab") ||
                     food1.equals("soup")) {
 
-                setYemek(food1);
+                setFood(food1);
                 System.out.println("Your choice is been made.");
                 break;
 

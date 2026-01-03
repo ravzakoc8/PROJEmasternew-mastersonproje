@@ -24,7 +24,7 @@ public VegetarianFood(){
                     food1.equals("sarma") || food1.equals("makarna salatası") ||
                     food1.equals("çorba")) {
 
-                setYemek(food1);
+                setFood(food1);
                 System.out.println("Your choice is been made.");
                 break;
 

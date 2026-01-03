@@ -22,7 +22,7 @@ public class OrderCustomerFileManager {
                 OrderRegistration sv = new OrderRegistration();
                 sv.setEmail(part[0]);
                 sv.setPassword(part[1]);
-                sv.setTc(Long.parseLong(part[2]));
+                sv.setTc(Long.parseLong(part[2])); //parseLong: gelen dosyayı long türüne çevirir
                 sv.setaddress(part[3]);
 
                 customer.add(sv);

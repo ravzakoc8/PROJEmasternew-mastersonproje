@@ -37,10 +37,10 @@ public class Order {
 
             int orgType = scanner.nextInt();
 
-            // ADIM 1: Polimorfik Referansı Oluştur (Henüz boş)
+            //  Polimorfik Referansı Oluştur
             OrderOrganisation organisation = null;
 
-            // ADIM 2: Sadece "new" işlemi yap (Kutuyu doldur)
+
             if (orgType == 1) {
                 organisation = new Birthday();
             } else if (orgType == 2) {
@@ -54,7 +54,7 @@ public class Order {
                 return;
             }
 
-            // ADIM 3: Metotları sadece BURADA çağır (Kod tekrarı bitti!)
+            // Metotları sadece BURADA çağır (Kod tekrarı bitti!)
             // Java, 'organisation' değişkeninin içinde hangi obje varsa (Kına mı, Doğumgünü mü) onu çalıştırır.
             organisation.accessories();
             organisation.numberOfPeople();
@@ -68,10 +68,10 @@ public class Order {
             System.out.println("Order food type: 1-Normal, 2-Vegetarian, 3-Vegan");
             int foodType = scanner.nextInt();
 
-            // ADIM 1: Polimorfik Referans (Boş kutu)
+            //  Polimorfik Referans (Boş kutu)
             OrderingFood food = null;
 
-            // ADIM 2: Kutuyu doldur
+
             if (foodType == 1) {
                 food = new NormalFood();
             } else if (foodType == 2) {
@@ -83,7 +83,7 @@ public class Order {
                 return;
             }
 
-            // ADIM 3: Metotları tek seferde çalıştır
+            //  Metotları tek seferde çalıştır
             food.foodName();
             food.numberOfPeople();
             food.beverageChoice();

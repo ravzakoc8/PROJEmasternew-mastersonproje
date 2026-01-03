@@ -1,7 +1,11 @@
 package com.ravzakoc;
 
 public interface RegisterScreen {
-   void register();
+   // bu bize extends edilen methodlarda poly kullanma imkanı verir
+   //Open/Closed Principle uyumlu olmasını sağlar
+
+   void register(); //imza methodu
+
 
 
 }
